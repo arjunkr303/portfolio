@@ -16,16 +16,12 @@ export function Contact() {
   const [isSending, setIsSending] = useState(false);
 
   // Replace these with your EmailJS credentials after signing up at emailjs.com
-  const SERVICE_ID = "service_b08wbnj";
+  const SERVICE_ID = "service_rt81m7i";
   const TEMPLATE_ID = "template_0aackec";
   const PUBLIC_KEY = "Lu_J8UQfUAsu-r7ey";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (SERVICE_ID === "service_b08wbnj") {
-      toast.error("EmailJS not configured. Please update SERVICE_ID, TEMPLATE_ID, and PUBLIC_KEY in Contact.tsx");
-      return;
-    }
     setIsSending(true);
     emailjs
       .send(
