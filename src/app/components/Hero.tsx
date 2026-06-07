@@ -88,7 +88,7 @@ export function Hero() {
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-slate-300 mb-2">
-              ML & AI Developer | LLM & Agent Specialist
+              AI & ML Developer | LLM & Agent Specialist
             </p>
             <p className="text-slate-400 max-w-2xl mx-auto">
               Teaching Machines to Think, Act, and Optimize.
