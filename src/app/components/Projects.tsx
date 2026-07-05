@@ -7,6 +7,14 @@ import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 export function Projects() {
   const projects = [
     {
+      title: "Campus Event Hub",
+      description: "A microservices-based campus event platform featuring Kafka event streaming, NGINX gateway routing, Prometheus/Grafana monitoring, and Kubernetes canary deployments.",
+      tech: ["FastAPI", "PostgreSQL", "Kafka", "Prometheus", "Grafana", "NGINX", "Docker", "Kubernetes"],
+      github: "https://github.com/arjunkr303/campus-event-hub",
+      live: undefined,
+      gradient: "from-blue-500/20 to-cyan-500/20",
+    },
+    {
       title: "Advanced RAG Chatbot System",
       description: "An intelligent RAG chatbot powered by Llama 3.2 with multi-agent orchestration (Source Locator + Detail Extractor), hierarchical RBAC with admin/parent/child roles, real-time streaming via WebSockets, and token quota management with built-in analytics.",
       tech: ["Python", "FastAPI", "LangChain", "Ollama", "ChromaDB", "MySQL", "JWT"],
@@ -30,14 +38,6 @@ export function Projects() {
       live: undefined,
       gradient: "from-amber-500/20 to-orange-500/20",
     },
-    {
-      title: "House Price Prediction",
-      description: "End-to-end ML pipeline predicting house prices from Kaggle data. Covers data cleaning, feature engineering, EDA, and XGBoost with 5-fold cross-validation achieving R² of 0.819.",
-      tech: ["Python", "XGBoost", "Scikit-Learn", "Pandas", "NumPy", "Matplotlib"],
-      github: "https://github.com/arjunkr303/house_price_prediction",
-      live: undefined,
-      gradient: "from-rose-500/20 to-pink-500/20",
-    },
   ];
 
   return (
@@ -56,7 +56,7 @@ export function Projects() {
             </span>
           </h2>
           <p className="text-slate-300 max-w-2xl mx-auto text-lg">
-            A selection of projects showcasing my expertise in AI/ML development
+            A selection of projects showcasing my expertise in AI & LLMOps development
           </p>
         </motion.div>
 
@@ -108,7 +108,7 @@ export function Projects() {
                         <Github className="w-4 h-4 mr-2" />
                         Code
                       </Button>
-                      {project.live ? (
+                      {project.live && (
                         <Button
                           size="sm"
                           className="flex-1 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white border-0"
@@ -116,15 +116,6 @@ export function Projects() {
                         >
                           <ExternalLink className="w-4 h-4 mr-2" />
                           Check Out
-                        </Button>
-                      ) : (
-                        <Button
-                          size="sm"
-                          disabled
-                          className="flex-1 bg-slate-700/50 text-slate-400 border-slate-600/50 cursor-not-allowed"
-                        >
-                          <ExternalLink className="w-4 h-4 mr-2" />
-                          Coming Soon
                         </Button>
                       )}
                     </div>

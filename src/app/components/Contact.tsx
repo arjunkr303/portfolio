@@ -73,7 +73,7 @@ export function Contact() {
             </span>
           </h2>
           <p className="text-slate-300 max-w-2xl mx-auto text-lg">
-            Open to AI/ML roles and open-source collaborations!
+            Open to AI & LLMOps roles and open-source collaborations!
           </p>
         </motion.div>
 

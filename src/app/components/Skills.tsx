@@ -6,7 +6,7 @@ export function Skills() {
     {
       category: "AI & LLM Stack",
       color: "from-indigo-500 to-violet-500",
-      skills: ["LangChain", "LangGraph", "Gemini", "Llama 3", "Mistral", "Groq", "Prompt Engineering", "RAG Pipelines"],
+      skills: ["LangChain", "LangGraph", "Gemini", "Llama 3", "Groq", "Prompt Engineering", "RAG Pipelines"],
     },
     {
       category: "ML & Deep Learning",
@@ -16,12 +16,12 @@ export function Skills() {
     {
       category: "Data & Vector DBs",
       color: "from-amber-500 to-orange-500",
-      skills: ["ChromaDB", "Pinecone", "FAISS", "Pandas", "NumPy", "Matplotlib", "MySQL", "PostgreSQL", "MongoDB"],
+      skills: ["ChromaDB", "Pandas", "NumPy", "Matplotlib", "MySQL", "PostgreSQL", "MongoDB", "Supabase"],
     },
     {
-      category: "Dev, Deploy & Cloud",
+      category: "LMOps & Infra",
       color: "from-rose-500 to-pink-500",
-      skills: ["Git", "GitHub", "Docker", "CI/CD", "FastAPI", "Linux", "AWS", "Supabase", "VS Code"],
+      skills: ["Docker", "Kubernetes", "Helm", "CI/CD", "AWS", "FastAPI", "Kafka", "NGINX", "Prometheus", "Grafana", "Model Serving"],
     },
   ];
 

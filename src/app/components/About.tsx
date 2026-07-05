@@ -41,7 +41,7 @@ export function About() {
             </span>
           </h2>
           <p className="text-slate-300 max-w-3xl mx-auto text-lg">
-            I'm a passionate AI/ML developer dedicated to building intelligent systems. 
+            I'm a passionate AI & LLMOps Engineer dedicated to building intelligent systems. 
             From autonomous agents to scalable RAG pipelines, I focus on bridging the gap 
             between data and intelligent action.
           </p>
