@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Mail, Linkedin, Github, Twitter } from "lucide-react";
+import { Mail, Linkedin, Github, Instagram, Send } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
 import { Input } from "@/app/components/ui/input";
 import { Textarea } from "@/app/components/ui/textarea";
@@ -15,7 +15,7 @@ export function Contact() {
   });
   const [isSending, setIsSending] = useState(false);
 
-  // Replace these with your EmailJS credentials after signing up at emailjs.com
+  // EmailJS credentials
   const SERVICE_ID = "service_rt81m7i";
   const TEMPLATE_ID = "template_0aackec";
   const PUBLIC_KEY = "Lu_J8UQfUAsu-r7ey";
@@ -46,153 +46,120 @@ export function Contact() {
   };
 
   const socialLinks = [
-    { icon: Github, label: "GitHub", url: "https://github.com/arjunkr303", color: "hover:text-slate-100" },
-    { icon: Linkedin, label: "LinkedIn", url: "https://www.linkedin.com/in/arjun-k-r-/", color: "hover:text-indigo-400" },
-    { icon: Mail, label: "Email", url: "mailto:arjunsreechakram@gmail.com", color: "hover:text-amber-400" },
+    { icon: Instagram, label: "Instagram", url: "https://www.instagram.com/___walkman__/", handle: "@___walkman__", color: "hover:text-pink-400" },
+    { icon: Github, label: "GitHub", url: "https://github.com/arjunkr303", handle: "@arjunkr303", color: "hover:text-slate-100" },
+    { icon: Linkedin, label: "LinkedIn", url: "https://www.linkedin.com/in/arjun-k-r-/", handle: "arjun-k-r-", color: "hover:text-cyan-400" },
+    { icon: Mail, label: "Email", url: "mailto:arjunsreechakram@gmail.com", handle: "arjunsreechakram@gmail.com", color: "hover:text-teal-400" },
   ];
 
   return (
-    <section className="py-24 bg-slate-950 relative overflow-hidden" id="contact">
-      {/* Background decoration */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-48 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl"></div>
+    <section className="py-24 bg-[#12161f] text-white relative overflow-hidden border-t border-slate-800/60" id="contact">
+      {/* Background Grid Pattern */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-20"></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-            <span className="bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
-              Get In Touch
-            </span>
-          </h2>
-          <p className="text-slate-300 max-w-2xl mx-auto text-lg">
-            Open to AI & LLMOps roles and open-source collaborations!
-          </p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-slate-300 mb-2">
-                  Name
-                </label>
-                <Input
-                  id="name"
-                  type="text"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="Your Name"
-                  required
-                  className="bg-slate-800/50 border-slate-700 text-white placeholder:text-slate-500 focus:border-indigo-500"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-slate-300 mb-2">
-                  Email
-                </label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="your.email@example.com"
-                  required
-                  className="bg-slate-800/50 border-slate-700 text-white placeholder:text-slate-500 focus:border-indigo-500"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-slate-300 mb-2">
-                  Message
-                </label>
-                <Textarea
-                  id="message"
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Tell me about your project or role..."
-                  required
-                  rows={6}
-                  className="bg-slate-800/50 border-slate-700 text-white placeholder:text-slate-500 focus:border-indigo-500 resize-none"
-                />
-              </div>
-
-              <Button
-                type="submit"
-                size="lg"
-                disabled={isSending}
-                className="w-full bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white border-0 disabled:opacity-70 disabled:cursor-not-allowed"
+      <div className="container mx-auto px-6 max-w-7xl z-10 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          {/* Left Column: Got a project in mind? */}
+          <div className="lg:col-span-5 space-y-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="space-y-4"
+            >
+              {/* Header styled like mockup: Got a project in (white) mind? (cyan/teal) */}
+              <h2 
+                className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[1.1]" 
+                style={{ fontFamily: "'Outfit', 'Space Grotesk', sans-serif" }}
               >
-                {isSending ? "Sending..." : "Send Message"}
-              </Button>
-            </form>
-          </motion.div>
+                <span className="block text-white">Got a project</span>
+                <span className="block text-[#00C9A7] mt-1">in mind?</span>
+              </h2>
 
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col justify-center"
-          >
-            <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-8">
-              <h3 className="text-2xl font-semibold text-white mb-4">
-                Let's Connect
-              </h3>
-              
-              <p className="text-slate-300 mb-8 leading-relaxed">
-                I'm always open to discussing new projects, creative ideas, or opportunities 
-                to be part of your vision. Feel free to reach out through any of these channels.
+              <p className="text-slate-400 text-base sm:text-lg leading-relaxed font-normal pt-2 font-['Halfre_Sans','Inter',sans-serif]">
+                Whether you want to build autonomous AI agents, deploy custom LLM pipelines, or collaborate on open-source projects, feel free to drop a message!
               </p>
+            </motion.div>
+          </div>
 
-              <div className="space-y-4">
-                {socialLinks.map((social, index) => (
-                  <motion.a
-                    key={social.label}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex items-center gap-4 text-slate-400 ${social.color} transition-colors group`}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1, duration: 0.3 }}
-                    whileHover={{ x: 10 }}
-                  >
-                    <div className="w-10 h-10 bg-slate-700/50 rounded-lg flex items-center justify-center group-hover:bg-slate-700 transition-colors">
-                      <social.icon className="w-5 h-5" />
-                    </div>
-                    <span className="font-medium">{social.label}</span>
-                  </motion.a>
-                ))}
-              </div>
+          {/* Right Column: Contact Form matching mockup styling */}
+          <div className="lg:col-span-7">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-[#151a24] border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-2xl space-y-6"
+            >
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Side by side Inputs for Name and Email */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 font-['Halfre_Sans','Inter',sans-serif]">
+                  <div className="space-y-2">
+                    <label htmlFor="name" className="block text-xs font-['Halfre_Sans','Inter',sans-serif] font-medium text-slate-300">
+                      Your name
+                    </label>
+                    <Input
+                      id="name"
+                      type="text"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      placeholder="Name"
+                      required
+                      className="bg-[#1c2331] border-slate-800 text-white placeholder:text-slate-500 focus:border-[#00C9A7] focus:ring-1 focus:ring-[#00C9A7] h-12 rounded-xl font-['Halfre_Sans','Inter',sans-serif]"
+                    />
+                  </div>
 
-              <div className="mt-8 pt-8 border-t border-slate-700">
-                <p className="text-slate-400 text-sm">
-                  <span className="text-indigo-400">Available for:</span>
-                  <br />
-                  Freelance projects, Full-time opportunities, Open Source Contributions
-                </p>
-              </div>
-            </div>
-          </motion.div>
+                  <div className="space-y-2">
+                    <label htmlFor="email" className="block text-xs font-['Halfre_Sans','Inter',sans-serif] font-medium text-slate-300">
+                      Your email
+                    </label>
+                    <Input
+                      id="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="Email"
+                      required
+                      className="bg-[#1c2331] border-slate-800 text-white placeholder:text-slate-500 focus:border-[#00C9A7] focus:ring-1 focus:ring-[#00C9A7] h-12 rounded-xl font-['Halfre_Sans','Inter',sans-serif]"
+                    />
+                  </div>
+                </div>
+
+                {/* Message Field */}
+                <div className="space-y-2 font-['Halfre_Sans','Inter',sans-serif]">
+                  <label htmlFor="message" className="block text-xs font-['Halfre_Sans','Inter',sans-serif] font-medium text-slate-300">
+                    Your Message
+                  </label>
+                  <Textarea
+                    id="message"
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    placeholder="Message"
+                    required
+                    rows={6}
+                    className="bg-[#1c2331] border-slate-800 text-white placeholder:text-slate-500 focus:border-[#00C9A7] focus:ring-1 focus:ring-[#00C9A7] resize-none rounded-xl font-['Halfre_Sans','Inter',sans-serif]"
+                  />
+                </div>
+
+                {/* Send Message Button matching mockup teal pill style */}
+                <button
+                  type="submit"
+                  disabled={isSending}
+                  className="bg-[#00C9A7] hover:bg-[#00a3a3] text-slate-950 font-bold px-8 py-3.5 rounded-full shadow-lg shadow-teal-500/20 transition-all duration-200 flex items-center gap-2 text-sm cursor-pointer disabled:opacity-60 font-['Halfre_Sans','Inter',sans-serif]"
+                >
+                  <span>{isSending ? "Sending..." : "Send Message"}</span>
+                  <Send className="w-4 h-4" />
+                </button>
+              </form>
+            </motion.div>
+          </div>
+
         </div>
       </div>
     </section>
   );
-}
+}

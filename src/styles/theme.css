@@ -1,7 +1,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --font-family-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-family-sans: 'Halfre Sans', 'Inter', system-ui, -apple-system, sans-serif;
   --font-family-heading: 'Outfit', sans-serif;
   --font-family-mono: 'JetBrains Mono', monospace;
   --font-size: 16px;

@@ -1,82 +1,139 @@
 import { motion } from "motion/react";
-import { Brain, Files, Code, Rocket } from "lucide-react";
+import { Brain, Cpu, Database, Server, Terminal, ShieldCheck, Zap } from "lucide-react";
+import { LuBrainCog } from "react-icons/lu";
 
 export function About() {
-  const values = [
+  const pillars = [
     {
-      icon: Brain,
-      title: "AI Agents",
-      description: "Building multi-agent architectures and LangGraph workflows for autonomous decision-making",
+      icon: LuBrainCog,
+      title: "Multi-Agent Systems",
+      subtitle: "LangGraph & Autonomous Workflows",
+      description: "Building resilient multi-agent graphs with state memory, diagnostic repair loops, and tool execution.",
+      badge: "LangGraph",
     },
     {
-      icon: Files,
-      title: "LLM Systems",
-      description: "Integrating Gemini, Llama 3, and Mistral with advanced RAG pipelines and semantic search",
+      icon: Cpu,
+      title: "LLM Systems & RAG",
+      subtitle: "Semantic Retrieval & Local LLMs",
+      description: "Architecting high-accuracy RAG pipelines using Llama 3.2, Ollama, ChromaDB, and hybrid vector search.",
+      badge: "Llama 3.2",
     },
     {
-      icon: Code,
+      icon: Database,
       title: "ML Engineering",
-      description: "Developing predictive models using TensorFlow, PyTorch, and Scikit-Learn for real-world impact",
+      subtitle: "PyTorch & Deep Learning",
+      description: "Developing custom neural architectures, vision transformers, and image-to-text models with PyTorch.",
+      badge: "PyTorch",
     },
     {
-      icon: Rocket,
-      title: "Innovation",
-      description: "Bridging raw data to autonomous intelligent solutions through open-source innovation",
+      icon: Server,
+      title: "MLOps Infrastructure",
+      subtitle: "Cloud & Microservices",
+      description: "Deploying production APIs with FastAPI, Kafka event streams, Docker, Kubernetes, and Prometheus monitoring.",
+      badge: "Kubernetes",
     },
   ];
 
   return (
-    <section className="py-24 bg-slate-900" id="about">
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-            <span className="bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
-              About Me
-            </span>
-          </h2>
-          <p className="text-slate-300 max-w-3xl mx-auto text-lg">
-            I'm a passionate AI & LLMOps Engineer dedicated to building intelligent systems. 
-            From autonomous agents to scalable RAG pipelines, I focus on bridging the gap 
-            between data and intelligent action.
-          </p>
-        </motion.div>
+    <section className="py-24 bg-[#12161f] text-white relative overflow-hidden border-t border-slate-800/60" id="about">
+      {/* Structural layout grid lines */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-20"></div>
+      </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-          {values.map((value, index) => (
+      <div className="container mx-auto px-6 max-w-7xl z-10 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Column: Heading & Bio */}
+          <div className="lg:col-span-5 space-y-6">
             <motion.div
-              key={value.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-              whileHover={{ y: -10 }}
-              className="group"
+              transition={{ duration: 0.6 }}
+              className="space-y-4"
             >
-              <div className="relative h-full bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 hover:border-indigo-500/50 transition-all duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-violet-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                
-                <div className="relative z-10">
-                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-500/20 to-violet-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <value.icon className="w-6 h-6 text-indigo-400" />
-                  </div>
-                  
-                  <h3 className="text-xl font-semibold text-white mb-2">
-                    {value.title}
-                  </h3>
-                  
-                  <p className="text-slate-400 text-sm leading-relaxed">
-                    {value.description}
-                  </p>
-                </div>
+              {/* Heading styled exactly like the mockup: About (white) me (cyan/teal) */}
+              <h2 
+                className="text-5xl sm:text-6xl font-black uppercase tracking-tight" 
+                style={{ fontFamily: "'Outfit', 'Space Grotesk', sans-serif" }}
+              >
+                <span className="text-white">About </span>
+                <span className="text-[#00C9A7]">me</span>
+              </h2>
+
+              <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-normal pt-2 font-['Halfre_Sans','Inter',sans-serif]">
+                I am an <strong className="text-white font-semibold">AI & LLM Engineer</strong> focused on building production-ready intelligent systems. My expertise spans autonomous multi-agent orchestration with LangGraph, scalable RAG architectures, and containerized MLOps pipelines.
+              </p>
+
+              <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-normal font-['Halfre_Sans','Inter',sans-serif]">
+                I design and deploy robust, production-ready intelligent systems using cutting-edge AI and open-source technologies. My work bridges complex machine learning research into high-performance applications, focusing on scalability, reliability, and real-world impact.
+              </p>
+            </motion.div>
+
+            {/* Quick Stats Badges */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="grid grid-cols-2 gap-4 pt-4"
+            >
+              <div className="bg-[#161c28] border border-slate-800 rounded-xl p-4">
+                <div className="text-2xl font-bold text-[#00C9A7]">4+</div>
+                <div className="text-xs text-slate-300 font-['Halfre_Sans','Inter',sans-serif] mt-1 font-medium">Production AI Projects</div>
+              </div>
+              <div className="bg-[#161c28] border border-slate-800 rounded-xl p-4">
+                <div className="text-2xl font-bold text-cyan-400">100%</div>
+                <div className="text-xs text-slate-300 font-['Halfre_Sans','Inter',sans-serif] mt-1 font-medium">System Reliability Focus</div>
               </div>
             </motion.div>
-          ))}
+          </div>
+
+          {/* Right Column: High-Tech Engineering Pillars Showcase */}
+          <div className="lg:col-span-7">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {pillars.map((pillar, index) => (
+                <motion.div
+                  key={pillar.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  whileHover={{ y: -5 }}
+                  className="group relative bg-[#151a24] hover:bg-[#18202d] border border-slate-800 hover:border-[#00C9A7]/40 rounded-xl p-6 transition-all duration-300 shadow-xl"
+                >
+                  {/* Subtle hover gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#00C9A7]/5 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+
+                  <div className="relative z-10 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="w-10 h-10 rounded-lg bg-[#00C9A7]/10 border border-[#00C9A7]/20 flex items-center justify-center text-[#00C9A7] group-hover:scale-110 transition-transform">
+                        <pillar.icon className="w-5 h-5" />
+                      </div>
+                      <span className="text-[10px] font-['Halfre_Sans','Inter',sans-serif] font-medium px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                        {pillar.badge}
+                      </span>
+                    </div>
+
+                    <div>
+                      <h3 className="text-lg font-bold text-white group-hover:text-[#00C9A7] transition-colors">
+                        {pillar.title}
+                      </h3>
+                      <div className="text-xs font-['Halfre_Sans','Inter',sans-serif] font-medium text-teal-400 mt-0.5">
+                        {pillar.subtitle}
+                      </div>
+                    </div>
+
+                    <p className="text-slate-400 text-xs leading-relaxed font-['Halfre_Sans','Inter',sans-serif]">
+                      {pillar.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

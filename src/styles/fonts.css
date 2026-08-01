@@ -1,1 +1,5 @@
-/* Custom font imports can be added here */
+/* Body and content paragraph font family */
+body, p, li, label, textarea, input {
+  font-family: 'Halfre Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
