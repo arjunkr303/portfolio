@@ -38,10 +38,10 @@ export function Skills() {
       skills: [
         "FastAPI & RESTful APIs",
         "Docker & Kubernetes",
+        "GitHub Actions",
         "Kafka Event Streaming",
         "Prometheus & Grafana",
         "AWS & Cloud Hosting",
-        "NGINX Gateway",
       ],
     },
     {
