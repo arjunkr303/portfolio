@@ -13,7 +13,7 @@ export function Projects() {
     {
       title: "Advanced RAG Chatbot System",
       category: "AI & LLMs",
-      description: "An intelligent RAG chatbot powered by Llama 3.2 with multi-agent orchestration (Source Locator + Detail Extractor), hierarchical RBAC, WebSockets streaming, and token quota analytics.",
+      description: "Most RAG chatbots hallucinate when they lack relevant context and have no access control, making them unusable once real documents and multiple users are involved. I built a RAG system that treats trust and access control as core design constraints.",
       tech: ["Python", "FastAPI", "LangChain", "Ollama", "ChromaDB", "MySQL", "JWT"],
       github: "https://github.com/arjunkr303/rag-chatbot",
       live: undefined,
@@ -22,7 +22,7 @@ export function Projects() {
     {
       title: "JobPilot - Multi-Agent Job Automation",
       category: "Multi-Agent",
-      description: "An autonomous multi-agent job application system powered by Playwright and JobSpy. Automates job discovery across platforms, resume tailoring, cover letter drafting, and browser-driven auto-applications.",
+      description: "Manually job hunting across scattered portals, matching resumes to JDs, and re-filling the same application forms doesn't scale. JobPilot automates this end-to-end with five coordinated AI agents: one scrapes job boards and company career pages, one scores resume-JD fit via LLM-based evaluation, and others handle portal login, Playwright-driven application form-filling, and recruiter outreach, all gated by a human review step before submission.",
       tech: ["Python", "Playwright", "JobSpy", "LangChain", "FastAPI", "Docker"],
       github: "https://github.com/arjunkr303/JobPilot",
       live: undefined,
@@ -31,7 +31,7 @@ export function Projects() {
     {
       title: "Campus Event Hub",
       category: "MLOps & Infra",
-      description: "A microservices-based campus event platform featuring Kafka event streaming, NGINX gateway routing, Prometheus/Grafana monitoring, and Kubernetes deployments.",
+      description: "Campus Event Hub tackles a systems design problem: how do you build a multi-domain workflow: users, events, registrations, notifications, without one tightly-coupled codebase where a spike in one area risks the whole system? This project decomposes that workflow into 5 independent microservices, each with its own container, port, and config, communicating asynchronously via Apache Kafka so services like Notification aren't directly coupled to the ones that trigger them.",
       tech: ["FastAPI", "PostgreSQL", "Kafka", "Prometheus", "Grafana", "NGINX", "Docker", "Kubernetes"],
       github: "https://github.com/arjunkr303/campus-event-hub",
       live: undefined,
@@ -40,8 +40,8 @@ export function Projects() {
     {
       title: "Inverse Cooking: Recipe Generation",
       category: "Deep Learning",
-      description: "An image-to-text model that analyzes food images and generates step-by-step cooking instructions. Uses a pre-trained ResNet18 encoder with a Transformer decoder trained on 13K+ recipes.",
-      tech: ["Python", "PyTorch", "CNN", "ResNet18", "Transformer", "NLP"],
+      description: "Restaurant food is a black box to customers, they see a dish, love it, but have no way to recreate it or order it customized. Inverse Cooking closes that loop: photograph food → get the actual chef's recipe (not a generic web guess) → optionally customize it → order it with the twist applied.",
+      tech: ["FastAPI", "REST APIs", "MCP", "Multimodal LLMs", "Prompt Engineering", ],
       github: "https://github.com/arjunkr303/inverse-cooking",
       live: undefined,
       badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30",
@@ -172,4 +172,4 @@ export function Projects() {
       </div>
     </section>
   );
-}
+}
