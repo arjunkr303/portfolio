@@ -1,6 +1,5 @@
 import { motion } from "motion/react";
-import { Mail, Linkedin, Github, Instagram, Send } from "lucide-react";
-import { Button } from "@/app/components/ui/button";
+import { Send } from "lucide-react";
 import { Input } from "@/app/components/ui/input";
 import { Textarea } from "@/app/components/ui/textarea";
 import { useState } from "react";
@@ -45,24 +44,17 @@ export function Contact() {
       .finally(() => setIsSending(false));
   };
 
-  const socialLinks = [
-    { icon: Instagram, label: "Instagram", url: "https://www.instagram.com/___walkman__/", handle: "@___walkman__", color: "hover:text-pink-400" },
-    { icon: Github, label: "GitHub", url: "https://github.com/arjunkr303", handle: "@arjunkr303", color: "hover:text-slate-100" },
-    { icon: Linkedin, label: "LinkedIn", url: "https://www.linkedin.com/in/arjun-k-r-/", handle: "arjun-k-r-", color: "hover:text-cyan-400" },
-    { icon: Mail, label: "Email", url: "mailto:arjunsreechakram@gmail.com", handle: "arjunsreechakram@gmail.com", color: "hover:text-teal-400" },
-  ];
-
   return (
-    <section className="py-24 bg-[#12161f] text-white relative overflow-hidden border-t border-slate-800/60" id="contact">
+    <section className="py-24 bg-slate-50 dark:bg-[#12161f] text-slate-900 dark:text-white relative overflow-hidden border-t border-slate-200 dark:border-slate-800/60 transition-colors duration-300" id="contact">
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-20"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(#94a3b8_1px,transparent_1px)] dark:bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-25 dark:opacity-20"></div>
       </div>
 
       <div className="container mx-auto px-6 max-w-7xl z-10 relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          {/* Left Column: Got a project in mind? */}
+          {/* Left Column */}
           <div className="lg:col-span-5 space-y-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -71,35 +63,34 @@ export function Contact() {
               transition={{ duration: 0.6 }}
               className="space-y-4"
             >
-              {/* Header styled like mockup: Got a project in (white) mind? (cyan/teal) */}
               <h2 
                 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[1.1]" 
                 style={{ fontFamily: "'Outfit', 'Space Grotesk', sans-serif" }}
               >
-                <span className="block text-white">Got a project</span>
-                <span className="block text-[#00C9A7] mt-1">in mind?</span>
+                <span className="block text-slate-900 dark:text-white font-black">GOT A PROJECT</span>
+                <span className="block text-[#00C9A7] font-black mt-1">IN MIND?</span>
               </h2>
 
-              <p className="text-slate-400 text-base sm:text-lg leading-relaxed font-normal pt-2 font-['Halfre_Sans','Inter',sans-serif]">
+              <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg leading-relaxed font-normal pt-2 font-['Halfre_Sans','Inter',sans-serif]">
                 Whether you want to build autonomous AI agents, deploy custom LLM pipelines, or collaborate on open-source projects, feel free to drop a message!
               </p>
             </motion.div>
           </div>
 
-          {/* Right Column: Contact Form matching mockup styling */}
+          {/* Right Column: Contact Form */}
           <div className="lg:col-span-7">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-[#151a24] border border-slate-800 rounded-2xl p-8 sm:p-10 shadow-2xl space-y-6"
+              className="bg-white dark:bg-[#151a24] border border-slate-200 dark:border-slate-800 rounded-2xl p-8 sm:p-10 shadow-lg dark:shadow-2xl space-y-6"
             >
               <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Side by side Inputs for Name and Email */}
+                {/* Inputs for Name and Email */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 font-['Halfre_Sans','Inter',sans-serif]">
                   <div className="space-y-2">
-                    <label htmlFor="name" className="block text-xs font-['Halfre_Sans','Inter',sans-serif] font-medium text-slate-300">
+                    <label htmlFor="name" className="block text-xs font-['Halfre_Sans','Inter',sans-serif] font-semibold text-slate-700 dark:text-slate-300">
                       Your name
                     </label>
                     <Input
@@ -109,12 +100,12 @@ export function Contact() {
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="Name"
                       required
-                      className="bg-[#1c2331] border-slate-800 text-white placeholder:text-slate-500 focus:border-[#00C9A7] focus:ring-1 focus:ring-[#00C9A7] h-12 rounded-xl font-['Halfre_Sans','Inter',sans-serif]"
+                      className="bg-slate-50 dark:bg-[#1c2331] border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#00C9A7] focus:ring-1 focus:ring-[#00C9A7] h-12 rounded-xl font-['Halfre_Sans','Inter',sans-serif]"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="email" className="block text-xs font-['Halfre_Sans','Inter',sans-serif] font-medium text-slate-300">
+                    <label htmlFor="email" className="block text-xs font-['Halfre_Sans','Inter',sans-serif] font-semibold text-slate-700 dark:text-slate-300">
                       Your email
                     </label>
                     <Input
@@ -124,14 +115,14 @@ export function Contact() {
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="Email"
                       required
-                      className="bg-[#1c2331] border-slate-800 text-white placeholder:text-slate-500 focus:border-[#00C9A7] focus:ring-1 focus:ring-[#00C9A7] h-12 rounded-xl font-['Halfre_Sans','Inter',sans-serif]"
+                      className="bg-slate-50 dark:bg-[#1c2331] border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#00C9A7] focus:ring-1 focus:ring-[#00C9A7] h-12 rounded-xl font-['Halfre_Sans','Inter',sans-serif]"
                     />
                   </div>
                 </div>
 
                 {/* Message Field */}
                 <div className="space-y-2 font-['Halfre_Sans','Inter',sans-serif]">
-                  <label htmlFor="message" className="block text-xs font-['Halfre_Sans','Inter',sans-serif] font-medium text-slate-300">
+                  <label htmlFor="message" className="block text-xs font-['Halfre_Sans','Inter',sans-serif] font-semibold text-slate-700 dark:text-slate-300">
                     Your Message
                   </label>
                   <Textarea
@@ -141,11 +132,11 @@ export function Contact() {
                     placeholder="Message"
                     required
                     rows={6}
-                    className="bg-[#1c2331] border-slate-800 text-white placeholder:text-slate-500 focus:border-[#00C9A7] focus:ring-1 focus:ring-[#00C9A7] resize-none rounded-xl font-['Halfre_Sans','Inter',sans-serif]"
+                    className="bg-slate-50 dark:bg-[#1c2331] border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-[#00C9A7] focus:ring-1 focus:ring-[#00C9A7] resize-none rounded-xl font-['Halfre_Sans','Inter',sans-serif]"
                   />
                 </div>
 
-                {/* Send Message Button matching mockup teal pill style */}
+                {/* Send Message Button */}
                 <button
                   type="submit"
                   disabled={isSending}
@@ -162,4 +153,4 @@ export function Contact() {
       </div>
     </section>
   );
-}
+}
