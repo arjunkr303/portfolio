@@ -17,6 +17,8 @@ interface SphereIcon {
   imgElement?: HTMLImageElement;
 }
 
+const imageCache = new Map<string, HTMLImageElement>();
+
 export function IconCloud({ images, iconSlugs }: IconCloudProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -29,6 +31,18 @@ export function IconCloud({ images, iconSlugs }: IconCloudProps) {
     }
     return [];
   }, [images, iconSlugs]);
+
+  // Eagerly pre-trigger loading all icons on mount
+  useEffect(() => {
+    iconUrls.forEach((url) => {
+      if (!imageCache.has(url)) {
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        img.src = url;
+        imageCache.set(url, img);
+      }
+    });
+  }, [iconUrls]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -57,9 +71,15 @@ export function IconCloud({ images, iconSlugs }: IconCloudProps) {
       const parts = url.split("/");
       const slug = parts[parts.length - 1] || `icon-${i}`;
 
-      const img = new Image();
-      img.crossOrigin = "anonymous";
-      img.src = url;
+      let img = imageCache.get(url);
+      let isLoaded = img ? img.complete && img.naturalWidth !== 0 : false;
+
+      if (!img) {
+        img = new Image();
+        img.crossOrigin = "anonymous";
+        img.src = url;
+        imageCache.set(url, img);
+      }
 
       const iconObj: SphereIcon = {
         x,
@@ -67,13 +87,37 @@ export function IconCloud({ images, iconSlugs }: IconCloudProps) {
         z,
         imgUrl: url,
         slug,
-        imgLoaded: false,
+        imgLoaded: isLoaded,
         imgElement: img,
       };
 
-      img.onload = () => {
+      if (img.complete && img.naturalWidth !== 0) {
         iconObj.imgLoaded = true;
-      };
+      } else {
+        img.onload = () => {
+          iconObj.imgLoaded = true;
+        };
+        img.onerror = () => {
+          const cleanSlug = slug.replace(/dotjs/, "js").replace(/5|3/, "");
+          const fallbackUrl = `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${cleanSlug}/${cleanSlug}-original.svg`;
+          let fallbackImg = imageCache.get(fallbackUrl);
+          if (!fallbackImg) {
+            fallbackImg = new Image();
+            fallbackImg.crossOrigin = "anonymous";
+            fallbackImg.src = fallbackUrl;
+            imageCache.set(fallbackUrl, fallbackImg);
+          }
+          if (fallbackImg.complete && fallbackImg.naturalWidth !== 0) {
+            iconObj.imgElement = fallbackImg;
+            iconObj.imgLoaded = true;
+          } else {
+            fallbackImg.onload = () => {
+              iconObj.imgElement = fallbackImg;
+              iconObj.imgLoaded = true;
+            };
+          }
+        };
+      }
 
       return iconObj;
     });
@@ -162,11 +206,21 @@ export function IconCloud({ images, iconSlugs }: IconCloudProps) {
         if (icon.imgLoaded && icon.imgElement) {
           ctx.drawImage(icon.imgElement, screenX, screenY, iconSize, iconSize);
         } else {
-          // Fallback circle while image loads
-          ctx.fillStyle = "#00C9A7";
+          // Sleek branded tech badge fallback with initial letters
+          const label = icon.slug.replace(/dotjs|5|3/g, "").substring(0, 2).toUpperCase();
+          ctx.fillStyle = "#1E2638";
+          ctx.strokeStyle = "#FF5500";
+          ctx.lineWidth = 1.5;
           ctx.beginPath();
           ctx.arc(centerX + icon.x, centerY + icon.y, iconSize / 2, 0, Math.PI * 2);
           ctx.fill();
+          ctx.stroke();
+
+          ctx.fillStyle = "#FFFFFF";
+          ctx.font = `bold ${Math.max(8, iconSize * 0.42)}px sans-serif`;
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillText(label, centerX + icon.x, centerY + icon.y + 0.5);
         }
 
         ctx.restore();

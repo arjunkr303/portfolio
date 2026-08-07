@@ -1,9 +1,11 @@
 import { Instagram, Github, Linkedin, Mail } from "lucide-react";
+import { SiHuggingface } from "react-icons/si";
 
 export function Footer() {
   const socialLinks = [
     { icon: Instagram, label: "Instagram", url: "https://www.instagram.com/___walkman__/" },
     { icon: Github, label: "GitHub", url: "https://github.com/arjunkr303" },
+    { icon: SiHuggingface, label: "Hugging Face", url: "https://huggingface.co/arjunkr303" },
     { icon: Linkedin, label: "LinkedIn", url: "https://www.linkedin.com/in/arjun-k-r-/" },
     { icon: Mail, label: "Email", url: "mailto:arjunsreechakram@gmail.com" },
   ];

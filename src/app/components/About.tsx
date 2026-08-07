@@ -1,32 +1,26 @@
 import { motion } from "motion/react";
-import { Cpu, Database, Server } from "lucide-react";
-import { LuBrainCog } from "react-icons/lu";
 
 export function About() {
   const pillars = [
     {
-      icon: LuBrainCog,
       title: "Multi-Agent Systems",
       subtitle: "LangGraph & Autonomous Workflows",
-      description: "Building resilient multi-agent graphs with state memory, diagnostic repair loops, and tool execution.",
+      description: "Building resilient multi-agent graphs with state memory, diagnostic repair loops, and autonomous tool execution.",
       badge: "LangGraph",
     },
     {
-      icon: Cpu,
+      title: "MCP & Tool Integration",
+      subtitle: "Model Context Protocol & APIs",
+      description: "Architecting custom MCP servers and standardized tool interfaces for LLMs to securely query databases & tools.",
+      badge: "MCP Server",
+    },
+    {
       title: "LLM Systems & RAG",
       subtitle: "Semantic Retrieval & Local LLMs",
       description: "Architecting high-accuracy RAG pipelines using Llama 3.2, Ollama, ChromaDB, and hybrid vector search.",
       badge: "Llama 3.2",
     },
     {
-      icon: Database,
-      title: "ML Engineering",
-      subtitle: "PyTorch & Deep Learning",
-      description: "Developing custom neural architectures, vision transformers, and image-to-text models with PyTorch.",
-      badge: "PyTorch",
-    },
-    {
-      icon: Server,
       title: "MLOps Infrastructure",
       subtitle: "Cloud & Microservices",
       description: "Deploying production APIs with FastAPI, Kafka event streams, Docker, Kubernetes, and Prometheus monitoring.",
@@ -62,11 +56,11 @@ export function About() {
               </h2>
 
               <p className="text-slate-700 dark:text-slate-300 text-base sm:text-lg leading-relaxed font-normal pt-2 font-['Halfre_Sans','Inter',sans-serif]">
-                I am an <strong className="text-slate-900 dark:text-white font-bold">AI & LLM Engineer</strong> focused on building production-ready intelligent systems. My expertise spans autonomous multi-agent orchestration with LangGraph, scalable RAG architectures, and containerized MLOps pipelines.
+                I am an <strong className="text-slate-900 dark:text-white font-bold">AI & LLM Engineer</strong> focused on building production-ready intelligent systems. My expertise spans autonomous AI agents, multi-agent orchestration with LangGraph, Model Context Protocol (MCP) integrations, scalable RAG architectures, and containerized MLOps pipelines.
               </p>
 
               <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed font-normal font-['Halfre_Sans','Inter',sans-serif]">
-                I design and deploy robust, production-ready intelligent systems using cutting-edge AI and open-source technologies. My work bridges complex machine learning research into high-performance applications, focusing on scalability, reliability, and real-world impact.
+                I design and deploy stateful multi-agent graphs and MCP tool servers that allow LLMs to securely execute tools, query real-time enterprise data, and execute self-healing workflow loops with high reliability.
               </p>
             </motion.div>
 
@@ -106,25 +100,22 @@ export function About() {
                   <div className="absolute inset-0 bg-gradient-to-br from-[#00C9A7]/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
 
                   <div className="relative z-10 space-y-3">
-                    <div className="flex items-center justify-between">
-                      <div className="w-10 h-10 rounded-lg bg-[#00C9A7]/10 border border-[#00C9A7]/30 flex items-center justify-center text-[#00C9A7] group-hover:scale-110 transition-transform">
-                        <pillar.icon className="w-5 h-5" />
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-[#00C9A7] transition-colors leading-snug">
+                          {pillar.title}
+                        </h3>
+                        <div className="text-xs font-['Halfre_Sans','Inter',sans-serif] font-semibold text-[#009b81] dark:text-teal-400 mt-1">
+                          {pillar.subtitle}
+                        </div>
                       </div>
-                      <span className="text-[10px] font-['Halfre_Sans','Inter',sans-serif] font-semibold px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+
+                      <span className="text-[10px] font-['Halfre_Sans','Inter',sans-serif] font-semibold px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 shrink-0 mt-0.5">
                         {pillar.badge}
                       </span>
                     </div>
 
-                    <div>
-                      <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-[#00C9A7] transition-colors">
-                        {pillar.title}
-                      </h3>
-                      <div className="text-xs font-['Halfre_Sans','Inter',sans-serif] font-semibold text-[#009b81] dark:text-teal-400 mt-0.5">
-                        {pillar.subtitle}
-                      </div>
-                    </div>
-
-                    <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed font-['Halfre_Sans','Inter',sans-serif]">
+                    <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed font-['Halfre_Sans','Inter',sans-serif] pt-1">
                       {pillar.description}
                     </p>
                   </div>

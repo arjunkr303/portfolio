@@ -84,6 +84,8 @@ p {
 .skills-marquee-wrap {
   overflow: hidden;
   width: 100%;
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
 }
 
 .skills-marquee-track {

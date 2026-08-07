@@ -1,0 +1,229 @@
+/* ==========================================================================
+   FloatingNavbar.css
+   Pure CSS (No UI frameworks / No animation libraries)
+   ========================================================================== */
+
+:root {
+  --navbar-height: 72px;
+  --indicator-size: 52px;
+  --primary-orange: #FF5500;
+  --primary-orange-glow: rgba(255, 85, 0, 0.35);
+  --ease-apple: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-entrance: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Page Entrance Keyframe */
+@keyframes navbarEntrance {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 30px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* Navbar Wrapper - Fixed at bottom center */
+.floating-navbar-wrapper {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  width: 100%;
+  max-width: 700px;
+  padding: 0 16px;
+  pointer-events: none;
+  
+  /* Entrance Animation: opacity 0 -> 1, translateY 30px -> 0, 700ms */
+  animation: navbarEntrance 700ms var(--ease-entrance) forwards;
+  will-change: transform, opacity;
+}
+
+/* Main Container Nav Element */
+.floating-navbar {
+  pointer-events: auto;
+  position: relative;
+  height: var(--navbar-height);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 9999px;
+  padding: 0 18px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 
+    0 20px 40px -8px rgba(0, 0, 0, 0.12),
+    0 4px 16px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  /* Scroll React - Gentle 3px upward movement */
+  transition: transform 300ms var(--ease-apple);
+  will-change: transform;
+}
+
+/* Gently move upward by 3px while scrolling */
+.floating-navbar.is-scrolling {
+  transform: translateY(-3px);
+}
+
+/* Active Orange Circle Indicator (52px diameter) */
+.active-indicator-circle {
+  position: absolute;
+  top: 10px; /* (72px - 52px) / 2 = 10px */
+  left: 0;
+  width: var(--indicator-size);
+  height: var(--indicator-size);
+  background: linear-gradient(135deg, #FF5500 0%, #FF6600 100%);
+  border-radius: 50%;
+  box-shadow: 0 6px 20px var(--primary-orange-glow);
+  pointer-events: none;
+  z-index: 1;
+
+  /* 450-550ms duration with cubic-bezier(0.22, 1, 0.36, 1) */
+  transition: transform 500ms var(--ease-apple);
+  will-change: transform;
+}
+
+/* Enlarged state during click movement (scale 1.08) */
+.active-indicator-circle.is-enlarged {
+  filter: brightness(1.05);
+}
+
+/* List Container */
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  z-index: 2;
+}
+
+/* Individual Navigation Item */
+.navbar-item {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+
+  /* Inactive Hover Animation (200ms duration) */
+  transition: transform 200ms var(--ease-apple);
+  will-change: transform;
+}
+
+/* Inactive items hover: translateY(-4px), scale(1.05) */
+.navbar-item:hover:not(.is-active) {
+  transform: translateY(-4px) scale(1.05);
+}
+
+.navbar-item:active {
+  transform: translateY(0) scale(0.96);
+}
+
+/* Link Element */
+.navbar-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: #0d0d0d;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  outline: none;
+  user-select: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0 12px;
+}
+
+/* Content Container (Icon + Label) */
+.navbar-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.75;
+  transform: scale(0.95);
+  transition: 
+    transform 500ms var(--ease-apple),
+    opacity 500ms var(--ease-apple),
+    color 300ms ease;
+  will-change: transform, opacity, color;
+}
+
+/* Selected item: white color, opacity 1, scale 1 */
+.navbar-item.is-active .navbar-content {
+  opacity: 1;
+  transform: scale(1);
+  color: #ffffff;
+}
+
+/* Unselected items: black color, opacity 0.75 */
+.navbar-item:not(.is-active) .navbar-content {
+  opacity: 0.75;
+  color: #0d0d0d;
+}
+
+/* SVG Icon */
+.navbar-icon {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2.2;
+  stroke: currentColor;
+  fill: none;
+  transition: stroke 300ms ease;
+}
+
+/* Accessibility Focus */
+.navbar-link:focus-visible {
+  outline: 2px solid var(--primary-orange);
+  outline-offset: -2px;
+  border-radius: 9999px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .floating-navbar-wrapper {
+    bottom: 16px;
+    padding: 0 12px;
+  }
+
+  .floating-navbar {
+    height: 64px;
+    padding: 0 12px;
+  }
+
+  .active-indicator-circle {
+    top: 6px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .navbar-link {
+    gap: 4px;
+    padding: 0 6px;
+  }
+
+  .navbar-label {
+    font-size: 12px;
+  }
+
+  .navbar-icon {
+    width: 18px;
+    height: 18px;
+  }
+}
