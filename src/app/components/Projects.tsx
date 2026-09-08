@@ -5,9 +5,9 @@ import { Button } from "@/app/components/ui/button";
 import { Badge } from "@/app/components/ui/badge";
 
 export function Projects() {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const categories = ["AI & LLMs", "Multi-Agent", "MLOps & Infra", "Deep Learning"];
 
-  const categories = ["All", "AI & LLMs", "Multi-Agent", "MLOps & Infra", "Deep Learning"];
+  const [activeCategory, setActiveCategory] = useState(categories[0]);
 
   const projects = [
     {
@@ -17,7 +17,14 @@ export function Projects() {
       tech: ["Python", "FastAPI", "LangChain", "Ollama", "ChromaDB", "MySQL", "JWT"],
       github: "https://github.com/arjunkr303/rag-chatbot",
       live: undefined,
-      badgeColor: "bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/30",
+    },
+    {
+      title: "Multi-LLM MCP Gateway",
+      category: "AI & LLMs",
+      description: "Developers and coding agents are typically locked into a single model ecosystem. Multi-LLM MCP provides a unified Model Context Protocol gateway enabling IDE agents to dynamically delegate tasks across 5 providers—NVIDIA NIM, Groq, OpenRouter, DeepSeek, and local Ollama models—with connection pooling and fine-grained inference controls.",
+      tech: ["Python", "MCP Protocol", "FastAPI", "Ollama", "Groq", "OpenRouter", "DeepSeek"],
+      github: "https://github.com/arjunkr303/multi-llm-mcp",
+      live: undefined,
     },
     {
       title: "JobPilot - Multi-Agent Job Automation",
@@ -26,7 +33,6 @@ export function Projects() {
       tech: ["Python", "Playwright", "JobSpy", "LangChain", "FastAPI", "Docker"],
       github: "https://github.com/arjunkr303/JobPilot",
       live: undefined,
-      badgeColor: "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/30",
     },
     {
       title: "Campus Event Hub",
@@ -35,7 +41,6 @@ export function Projects() {
       tech: ["FastAPI", "PostgreSQL", "Kafka", "Prometheus", "Grafana", "NGINX", "Docker", "Kubernetes"],
       github: "https://github.com/arjunkr303/campus-event-hub",
       live: undefined,
-      badgeColor: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/30",
     },
     {
       title: "Inverse Cooking: Recipe Generation",
@@ -44,7 +49,6 @@ export function Projects() {
       tech: ["FastAPI", "REST APIs", "MCP", "Multimodal LLMs", "Prompt Engineering"],
       github: "https://github.com/arjunkr303/inverse-cooking",
       live: undefined,
-      badgeColor: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30",
     },
   ];
 
@@ -112,13 +116,6 @@ export function Projects() {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#00C9A7]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
 
                 <div className="p-6 sm:p-8 space-y-4 sm:space-y-5 relative z-10">
-                  {/* Category Badge & Title */}
-                  <div className="flex items-center justify-between gap-4">
-                    <span className={`text-[10px] sm:text-[11px] font-['Halfre_Sans','Inter',sans-serif] font-semibold px-2.5 sm:px-3 py-1 rounded-full border ${project.badgeColor}`}>
-                      {project.category}
-                    </span>
-                  </div>
-
                   <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white group-hover:text-[#00C9A7] transition-colors leading-snug">
                     {project.title}
                   </h3>

@@ -73,7 +73,7 @@ export function About() {
               className="grid grid-cols-2 gap-4 pt-4"
             >
               <div className="bg-white dark:bg-[#161c28] border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm dark:shadow-xl">
-                <div className="text-3xl font-black text-[#00C9A7]">4+</div>
+                <div className="text-3xl font-black text-[#00C9A7]">5+</div>
                 <div className="text-xs text-slate-700 dark:text-slate-300 font-['Halfre_Sans','Inter',sans-serif] mt-1 font-semibold">Production AI Projects</div>
               </div>
               <div className="bg-white dark:bg-[#161c28] border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm dark:shadow-xl">
